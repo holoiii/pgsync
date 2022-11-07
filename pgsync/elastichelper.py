@@ -182,6 +182,14 @@ class ElasticHelper(object):
             ):
                 self.doc_count += 1
         else:
+            sys.stdout.write('WTF')
+            sys.stdout.write(actions)
+            sys.stdout.flush()
+
+            logger.warning("======ACTIONS START======")
+            logger.warning(actions)
+            logger.warning("======ACTIONS END======")
+
             # parallel bulk consumes more memory and is also more likely
             # to result in 429 errors.
             for _ in helpers.parallel_bulk(
